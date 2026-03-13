@@ -11,15 +11,18 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20'
 
-      - name: Install ClawHub skill
-        run: npx clawhub@latest install verified-agent-identity
+      - name: Install ClawHub CLI
+        run: npm install -g clawhub
 
-      - name: Install script dependencies
+      - name: Install Verified Agent Skill
+        run: clawhub install verified-agent-identity
+
+      - name: Install dependencies
         run: |
           cd scripts
           npm install
